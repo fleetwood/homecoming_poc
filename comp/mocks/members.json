@@ -1,0 +1,9 @@
+[
+    {
+        "id":0,
+        "name":"Unknown",
+        "type":"None",
+        "slots": [1,4,5],
+        "instructors": [0]
+    }
+]

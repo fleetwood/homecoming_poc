@@ -1,0 +1,182 @@
+const events = require('./mocks/events.json')
+    , instructors = require('./mocks/instructors.json')
+    , members = require('./mocks/members.json')
+    , timeslots = require('./mocks/timeslots.json')
+    , tags = ['Power', 'Yoga', 'Distance'];
+
+const names = {
+    members: [
+        'Chanice Caldwell',
+        'Tulisa Dickinson',
+        'Marley Walls',
+        'Fatima Lyon',
+        'Ikrah Philip',
+        'Brayden Eaton',
+        'Blade Weeks',
+        'Nabilah Walton',
+        'Usaamah Odonnell',
+        'Sidrah Tomlinson',
+        'Jaydn Rahman',
+        'Joann Stuart',
+        'Dina Chang',
+        'Branden Ray',
+        'Iqra Allen',
+        'Yunus Lord',
+        'Junayd Meza',
+        'Jameson Cain',
+        'Jamaal Benjamin',
+        'Vivek Abbott',
+        'Evalyn Travers',
+        'Amy-Leigh Strickland',
+        'Jett Heaton',
+        'Tilly Matthews',
+        'Johnathon Gregory',
+        'Rio Roberts',
+        'Ryley Lugo',
+        'Halle Traynor',
+        'Daniyal Cullen',
+        'Harvey-Lee Kemp',
+        'Magdalena Tucker',
+        'Ciaran Escobar',
+        'Julien Clifford',
+        'Tyrone Kinney',
+        'Abu Bull',
+        'Edie Buckner',
+        'Joshua Wright',
+        'Keelan Vance',
+        'Aaryan Ryan',
+        'Fiona Stevenson',
+        'Jenna Cortes',
+        'Milana Hough',
+        'Shani Vo',
+        'Chenai Allan',
+        'Aliesha Le',
+        'Adaline Preston',
+        'Shanna Tate',
+        'Shelby Leon',
+        'Chay Hill',
+        'Cora Bray',
+        'Hakim Herring',
+        'Lylah Noble',
+        'Lennie Swan',
+        'Nelly Fischer',
+        'Jimmy Mueller',
+        'Dawud Reynolds',
+        'Will Ross',
+        'Ayesha Levy',
+        'Aayush Almond',
+        'Vivienne Rooney',
+        'Adeeb Henson',
+        'Menachem North',
+        'Aasiyah Zuniga',
+        'Naima Wiggins',
+        'Isla-Rae Livingston',
+        'Albert Salt',
+        'Amaya Petty',
+        'Salahuddin Fountain',
+        'Greyson Clay',
+        'Shakira Mcmillan',
+        'Ishaq Mansell',
+        'Sameeha Rigby',
+        'Shea Mahoney',
+        'Fabian Dickerson',
+        'Mared Stott',
+        'Nicolas Hendricks',
+        'Kobe Glenn',
+        'Kory Correa',
+        'Kaycee Cope',
+        'Keisha Gomez',
+        'Kynan Sharples',
+        'Abdurahman Lake',
+        'Karl Yoder',
+        'Kobi Spears',
+        'Gerald Mccall',
+        'Martyn Mcmanus',
+        'Fateh Golden',
+        'Vladimir Magana',
+        'Charley Webb',
+        'Sasha Garner',
+        'Blanche Portillo',
+        'Kaia Velez',
+        'Jared Whitney',
+        'Jadene Paul',
+        'Perry Greer',
+        'Blossom Wise',
+        'Amin Rios',
+        'Blanka Houghton',
+        'Rian Howarth',
+        'Kashif Woodley'
+    ],
+    instructors: [
+        'Nala Alfaro',
+        'Grady Blake',
+        'Milana Shepherd',
+        'Tom Tomlinson',
+        'Osian Ahmed',
+        'Bilal Petersen',
+        'Bernard Espinosa',
+        'Amarah Perez',
+        'Estelle Sheldon',
+        'Gerald Boyd',
+        'Aman Cornish',
+        'Nigel Sheridan',
+        'Toby Rosa',
+        'Harpreet Derrick',
+        'Suman Greene',
+        'Osman Hoover',
+        'Kylo Mcphee',
+        'Weronika Lancaster',
+        'Roxy Baldwin',
+        'Annaliese Bob',
+        'Mathias Partridge',
+        'Emil Cooke',
+        'Noa Bain',
+        'Toni Lyons',
+        'Vanesa Squires',
+        'Whitney Plant',
+        'Shahid Simon',
+        'Jacques Flower',
+        'Lawson Garner',
+        'Mathew Buckner'
+    ]
+};
+
+const random = {
+    event: {
+        id: 30,
+        capacity: [20, 30, 40],
+        tags,
+        instructors,
+        timeslots
+    },
+    instructor: {
+        id: 40,
+        tags,
+        name: names.instructors,
+    },
+    member: {
+        id: 3000,
+        tags,
+        name: names.members,
+    }
+}
+
+const randomEvent = () => {
+    return {};
+}
+const randomInstructor = () => {
+    return {};
+}
+const randomMember = () => {
+    return {};
+}
+
+module.exports = {
+    events,
+    instructors,
+    members,
+    timeslots,
+    randomEvent,
+    randomInstructor,
+    randomMember
+}

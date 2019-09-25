@@ -1,0 +1,35 @@
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabbable" id="tabs-701390">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active show" href="#tab1" data-toggle="tab">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tab2" data-toggle="tab">Members</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <div class="container">
+                            <div class="row main">
+                                {{#each data.events as |event|}}
+                                    {{#> event-item event}}{{/event-item}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <div class="container">
+                            <div class="row main">
+                                {{#each data.members as |member|}}
+                                    {{#> member-item member}}{{/member-item}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
