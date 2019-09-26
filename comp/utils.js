@@ -114,6 +114,45 @@ if (isUndefined(Array.limit)) {
     })
 }
 
+if (isUndefined(Array.mock)) {
+    /**
+     * Select a random item from the array
+     */
+    Object.defineProperty(Array.prototype, 'mock', {
+        value(limit, mock) {
+            for(var i = 0; i < limit; i++) {
+                this.push(mock());
+            }
+            return this;
+        }
+    });
+}
+
+if (isUndefined(Array.random)) {
+    /**
+     * Select a random item from the array. If limit is set, 
+     * will return an array of random items from the array.
+     * @param {num} limit Number of items to return
+     */
+    Object.defineProperty(Array.prototype, 'random', {
+        /**
+         * Select a random item from the array. If limit is set, 
+         * will return an array of random items from the array.
+         * @param {num} limit Number of items to return
+         */
+        value(limit = 1) {
+            if (limit == 1) {
+                return this[rand(0, this.length-1)];
+            }
+            let results = [];
+            while(limit-=1 > 0) {
+                results.push(this.random());
+            }
+            return results;
+        }
+    });
+}
+
 if(isUndefined(fs.readFileAsync)) {
     // make Promise version of fs.readFile()
     fs.readFileAsync = function (filename, enc = 'utf8') {

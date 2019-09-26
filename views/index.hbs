@@ -9,6 +9,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#tab2" data-toggle="tab">Members</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tab3" data-toggle="tab">Instructors</a>
+                    </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab1">
@@ -25,6 +28,15 @@
                             <div class="row main">
                                 {{#each data.members as |member|}}
                                     {{#> member-item member}}{{/member-item}}
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <div class="container">
+                            <div class="row main">
+                                {{#each data.instructors as |instructor|}}
+                                    {{#> member-item instructor}}{{/member-item}}
                                 {{/each}}
                             </div>
                         </div>

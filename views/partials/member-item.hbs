@@ -8,13 +8,11 @@
             <h4 class="list-group-item-heading">
                 Events
             </h4>
-            
-            <a href="#" class="list-group-item list-group-item-action active justify-content-between">
-                Event Name
-            </a>
-            <a href="#" class="list-group-item list-group-item-action active justify-content-between">
-                Event Name
-            </a>
+            {{#each timeslots as |slot|}}
+                <a href="#" class="list-group-item list-group-item-action active justify-content-between">
+                    <strong>{{slot.label}}</strong>
+                </a>
+            {{/each}}
         </div>
         <div class="list-group-item justify-content-between">
             Help <span class="badge badge-secondary badge-pill">14</span>
