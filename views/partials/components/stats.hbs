@@ -1,0 +1,18 @@
+<div class="main-card mb-3 card">
+    <div class="no-gutters row">
+        <h4>Stats</h4>
+    </div>
+    <div class="no-gutters row">
+        <div class="col-md-4">
+            <div class="pt-0 pb-0 card-body">
+                <ul class="list-group list-group-flush">
+                    {{log statistics}}
+                    {{#each statistics as |stat|}}
+                        {{log stat}}
+                        {{#> statistics-item stat}}{{/statistics-item}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
