@@ -12,7 +12,7 @@ const app = express();
 const api = require('./api')
     , apiUI = require('./api.ui')
     , schedule = require('./routes/schedule')
-    , index = require('./routes/index')
+    , index = require('./routes/dashboard')
     , register = require('./routes/register')
     , results = require('./routes/results')
     , saveTheDate = require('./routes/save-the-date');
@@ -20,7 +20,6 @@ const api = require('./api')
 app.use(function (req, res, next) {
     req.rawBody = '';
     req.on('data', (chunk) => req.rawBody += chunk);
-
     next();
 });
 
@@ -37,7 +36,8 @@ app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views/');
 app.use(express.static('public/'));
 
-[api, apiUI, index, register, results, saveTheDate, schedule].forEach(f => f.init(app));
+[api, apiUI, index, register, results, saveTheDate, schedule]
+    .forEach(f => f.init(app));
 
 const server = http.createServer(app);
 server.listen(config.port, null, function () {

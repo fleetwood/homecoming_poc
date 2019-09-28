@@ -152,6 +152,9 @@ const timeslots = [
         ANY: 'primary'
     };
 
+/**
+ * Create 30 specific instructors
+ */
 const randomInstructor = () => {
     return {
         id: utils.guid(),
@@ -162,6 +165,9 @@ const randomInstructor = () => {
 }
 const instructors = [].mock(30, randomInstructor);
 
+/**
+ * create 3000 members
+ */
 const randomMember = () => {
     const slots = utils.rand(1,3)
     return {
@@ -173,6 +179,9 @@ const randomMember = () => {
 }
 const members = [].mock(3000, randomMember);
 
+/**
+ * create 70 events with random capacities
+ */
 const randomEvent = () => {
     const tag = tags.random()
         , capacity = [10,20,30,40,200].random()
@@ -188,6 +197,10 @@ const randomEvent = () => {
     };
 }
 const events = [].mock(100, randomEvent);
+
+/**
+ * Associate each object to its references
+ */
 
 const statistics = [
     {
