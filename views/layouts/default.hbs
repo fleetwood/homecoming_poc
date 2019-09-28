@@ -1,49 +1,17 @@
 <!DOCTYPE html>
 <html>
-{{> head}}
+{{> layout/head}}
 
 <body>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        {{#> navbar}}{{/navbar}}
-      </div>
-      <div class="col-md-12">
-        <div class="jumbotron">
-          <h2>
-            Hello, world!
-          </h2>
-          <p>
-            This is a template for a simple marketing or informational website. It includes a large callout called the
-            hero unit and three supporting pieces of content. Use it as a starting point to create something more
-            unique.
-          </p>
-          <p>
-            <a class="btn btn-primary btn-large" href="#">Learn more</a>
-          </p>
-        </div>
-      </div>
-      <div class="col-12">
+  <div class="app-container app-theme-white body-tabs-shadow">
+    <div class="app-container">
+        {{> layout/navbar}}
         {{{body}}}
-      </div>
     </div>
   </div>
-  {{> footer}}
-  {{> scripts}}
-</body>
-
-</html>
-<!doctype html>
-<html lang="en">
-{{> head}}
-
-<body>
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-      {{> navbar}}
-      {{{body}}}
-    </div>
-    {{> scripts}}
+  {{> layout/footer}}
+  {{> layout/scripts}}
 </body>
 
 </html>

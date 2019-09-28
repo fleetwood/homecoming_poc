@@ -144,6 +144,12 @@ const timeslots = [
             'Lawson Garner',
             'Mathew Buckner'
         ]
+    }
+    , success = {
+        BAD: 'danger',
+        GOOD: 'success',
+        MEDIUM: 'warning',
+        ANY: 'primary'
     };
 
 const randomInstructor = () => {
@@ -183,10 +189,39 @@ const randomEvent = () => {
 }
 const events = [].mock(100, randomEvent);
 
+const statistics = [
+    {
+        title: 'Events',
+        description: 'Number of total events',
+        value: events.length,
+        success: success.GOOD
+    },
+    {
+        title: 'Members',
+        description: 'Number of members assigned',
+        value: `${members.length} of 3000`,
+        success: success.ANY
+    },
+    {
+        title: 'Passes',
+        description: 'Number of iterations to algorithm',
+        value: 1,
+        success: success.ANY
+    },
+    {
+        title: 'Rating',
+        description: 'Percentage of members with at least one preference scheduled',
+        value: '70%',
+        perc: 70,
+        success: success.MEDIUM
+    }
+];
+
 module.exports = {
     events,
     instructors,
     members,
+    statistics,
     timeslots,
     randomEvent,
     randomInstructor,

@@ -2,13 +2,15 @@
 //     , mocks = require('./../comp/mocks');
 
 const init = (app) => {
-  app.get('/save-the-date', (req, res) => {
-    res.render('save-the-date', {
-      title: 'Peloton Homecoming 2020 - Save The Date!',
+  app.get('/results', (req, res) => {
+    res.render('results', {
+      title: 'Peloton Homecoming 2020 - The results are in!',
       layout: 'layouts/default',
       data: {}
     });
   });
 };
 
-module.exports = init;
+module.exports = {
+  init
+};

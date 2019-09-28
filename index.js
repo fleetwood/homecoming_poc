@@ -6,12 +6,16 @@ const favicon = require('serve-favicon');
 const hbs = require('express-hbs');
 const http = require('http');
 const path = require('path');
-const api = require('./api');
-const apiUI = require('./api.ui');
 const utils = require('./comp/utils');
 const app = express();
 
-const mocks = require('./comp/mocks');
+const api = require('./api')
+    , apiUI = require('./api.ui')
+    , schedule = require('./routes/schedule')
+    , index = require('./routes/index')
+    , register = require('./routes/register')
+    , results = require('./routes/results')
+    , saveTheDate = require('./routes/save-the-date');
 
 app.use(function (req, res, next) {
     req.rawBody = '';
@@ -33,22 +37,7 @@ app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views/');
 app.use(express.static('public/'));
 
-api.init(app);
-apiUI.init(app);
-
-app.get('/', (req, res) => {
-    res.render('index', {
-      domain: req.get('host'),
-      protocol: req.protocol,
-      title: config.title,
-      layout: 'layouts/default',
-      data: {
-        instructors: mocks.instructors,
-        events: mocks.events,
-        members: mocks.members
-      }
-    });
-  });
+[api, apiUI, index, register, results, saveTheDate, schedule].forEach(f => f.init(app));
 
 const server = http.createServer(app);
 server.listen(config.port, null, function () {

@@ -1,19 +1,16 @@
-const config = require('./../comp/config')
-    , mocks = require('./../comp/mocks');
+// const config = require('./../comp/config')
+//     , mocks = require('./../comp/mocks');
 
 const init = (app) => {
-  app.get('/', (req, res) => {
-    res.render('index', {
-      title: config.title,
+  app.get('/save-the-date', (req, res) => {
+    res.render('save-the-date', {
+      title: 'Peloton Homecoming 2020 - Save The Date!',
       layout: 'layouts/default',
-      data: {
-        instructors: mocks.instructors,
-        events: mocks.events,
-        members: mocks.members,
-        stats: mocks.statistics
-      }
+      data: {}
     });
   });
 };
 
-module.exports = init;
+module.exports = {
+  init
+};

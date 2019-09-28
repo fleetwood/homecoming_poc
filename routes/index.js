@@ -1,9 +1,21 @@
-const express = require('express');
-const router = express.Router();
+const config = require('./../comp/config')
+    , mocks = require('./../comp/mocks');
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', {title: 'Nope', message: `Shit broke: ${error.message}`})
-});
+const init = (app) => {
+  app.get('/', (req, res) => {
+    res.render('index', {
+      title: config.title,
+      layout: 'layouts/default',
+      data: {
+        instructors: mocks.instructors,
+        events: mocks.events,
+        members: mocks.members,
+        stats: mocks.statistics
+      }
+    });
+  });
+};
 
-module.exports = router;
+module.exports = {
+  init
+};

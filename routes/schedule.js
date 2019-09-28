@@ -2,8 +2,8 @@
 //     , mocks = require('./../comp/mocks');
 
 const init = (app) => {
-  app.get('/admin', (req, res) => {
-    res.render('admin', {
+  app.get('/schedule', (req, res) => {
+    res.render('schedule', {
       title: 'Peloton Homecoming 2020 - Administrate the things!',
       layout: 'layouts/default',
       data: {}
@@ -11,4 +11,6 @@ const init = (app) => {
   });
 };
 
-module.exports = init;
+module.exports = {
+  init
+};
