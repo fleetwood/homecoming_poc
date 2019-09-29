@@ -1,0 +1,25 @@
+<div class="col-lg-6 col-xl-4">
+    <div class="card mb-3 widget-content">
+        <div class="widget-content-outer">
+            <div class="widget-content-wrapper">
+                <div class="widget-content-left">
+                    <div class="widget-heading">{{title}}</div>
+                    <div class="widget-subheading">{{description}}</div>
+                </div>
+                <div class="widget-content-right">
+                    <div class="widget-numbers text-{{success}}">{{value}}</div>
+                </div>
+            </div>
+            {{#if perc}}
+            <div class="widget-progress-wrapper">
+                <div class="progress-bar-xs progress">
+                    <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="{{perc}}" aria-valuemin="0" aria-valuemax="100" style="width: {{perc}}%;"></div>
+                </div>
+                <div class="progress-sub-label">
+                    <div class="sub-label-right">{{perc}}%</div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

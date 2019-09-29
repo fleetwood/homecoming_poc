@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "name":"Ally",
+        "type":"Power"
+    },
+    {
+        "id":2,
+        "name":"Charley",
+        "type":"Power"
+    },
+    {
+        "id":3,
+        "name":"Nate",
+        "type":"Yoga"
+    },
+    {
+        "id":4,
+        "name":"Leena",
+        "type":"Yoga"
+    },
+    {
+        "id":5,
+        "name":"Sean",
+        "type":"Distance"
+    },
+    {
+        "id":6,
+        "name":"Sloan",
+        "type":"Distance"
+    }
+]

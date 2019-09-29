@@ -1,0 +1,10 @@
+<div class="main-card mb-3 card">
+    <div class="row m-3">
+        <h4>Stats</h4>
+    </div>
+    <div class="row m-3">
+        {{#each stats as |stat|}}
+            {{> components/stats-item stat}}
+        {{/each}}
+    </div>
+</div>

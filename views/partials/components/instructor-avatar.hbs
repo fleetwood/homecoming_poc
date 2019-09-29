@@ -1,0 +1,17 @@
+<div class="row pl-2" style="color:whitesmoke">
+    <div class="col-2">
+        <img class="rounded-circle pull-left" style="border: 2px white solid" width="70" src="images/instructors/{{image}}" />
+    </div>
+    <div class="col-6 pl-3">
+        <h3>{{name}}</h3>
+        <div class="badge badge-info"><strong>({{events.length}}) Events</strong></div>
+        <small>{{description}}</small>
+    </div>
+    <div class="col-4">
+        {{#each events}}
+            <h5>
+                <i class="{{icon}}"></i> <span>{{type}}</span>
+            </h5>
+        {{/each}}
+    </div>
+</div>

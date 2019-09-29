@@ -1,0 +1,146 @@
+[
+    {
+        "id":1,
+        "name": "Yoga Groove 1",
+        "type": "Yoga",
+        "capacity": 30,
+        "instructor": 1,
+        "timeslot": 1
+    },
+    {
+        "id":2,
+        "name": "Yoga Groove 2",
+        "type": "Yoga",
+        "capacity": 30,
+        "instructor": 2,
+        "timeslot": 2
+    },
+    {
+        "id":3,
+        "name": "Yoga Groove 3",
+        "type": "Yoga",
+        "capacity": 30,
+        "instructor": 3,
+        "timeslot": 3
+    },
+    {
+        "id":4,
+        "name": "Yoga Groove 4",
+        "type": "Yoga",
+        "capacity": 30,
+        "instructor": 4,
+        "timeslot": 4
+    },
+    {
+        "id":5,
+        "name": "Yoga Groove 5",
+        "type": "Yoga",
+        "capacity": 30,
+        "instructor": 5,
+        "timeslot": 5
+    },
+    {
+        "id":6,
+        "name": "Yoga Groove 6",
+        "type": "Yoga",
+        "capacity": 30,
+        "instructor": 6,
+        "timeslot": 6
+    },
+    {
+        "id":7,
+        "name": "Distance Challenge 1",
+        "type": "Distance",
+        "capacity": 30,
+        "instructor": 1,
+        "timeslot": 1
+    },
+    {
+        "id":8,
+        "name": "Distance Challenge 2",
+        "type": "Distance",
+        "capacity": 30,
+        "instructor": 2,
+        "timeslot": 2
+    },
+    {
+        "id":9,
+        "name": "Distance Challenge 3",
+        "type": "Distance",
+        "capacity": 30,
+        "instructor": 3,
+        "timeslot": 3
+    },
+    {
+        "id":10,
+        "name": "Distance Challenge 4",
+        "type": "Distance",
+        "capacity": 30,
+        "instructor": 4,
+        "timeslot": 4
+    },
+    {
+        "id":11,
+        "name": "Distance Challenge 5",
+        "type": "Distance",
+        "capacity": 30,
+        "instructor": 5,
+        "timeslot": 5
+    },
+    {
+        "id":12,
+        "name": "Distance Challenge 6",
+        "type": "Distance",
+        "capacity": 30,
+        "instructor": 6,
+        "timeslot": 6
+    },
+    {
+        "id":13,
+        "name": "Power Hour 1",
+        "type": "Power",
+        "capacity": 30,
+        "instructor": 1,
+        "timeslot": 1
+    },
+    {
+        "id":14,
+        "name": "Power Hour 2",
+        "type": "Power",
+        "capacity": 30,
+        "instructor": 2,
+        "timeslot": 2
+    },
+    {
+        "id":15,
+        "name": "Power Hour 3",
+        "type": "Power",
+        "capacity": 30,
+        "instructor": 3,
+        "timeslot": 3
+    },
+    {
+        "id":16,
+        "name": "Power Hour 4",
+        "type": "Power",
+        "capacity": 30,
+        "instructor": 4,
+        "timeslot": 4
+    },
+    {
+        "id":17,
+        "name": "Power Hour 5",
+        "type": "Power",
+        "capacity": 30,
+        "instructor": 5,
+        "timeslot": 5
+    },
+    {
+        "id":18,
+        "name": "Power Hour 6",
+        "type": "Power",
+        "capacity": 30,
+        "instructor": 6,
+        "timeslot": 6
+    }
+]
