@@ -9,19 +9,19 @@
             <div id="{{event.id}}" class="card-body" style="background-image: linear-gradient(to top, #1af, white)">
                 <div class="row p-3">
                     <div class="col-8 p-3 bg-white rounded" style="background-image: linear-gradient(to bottom, #1af, white); -webkit-box-shadow: 0px 10px 20px 3px rgba(0,0,0,0.3); box-shadow: 0px 10px 20px 3px rgba(0,0,0,0.3);">
-                        <h3 class="row">
+                        <h3 class="row col-12">
                             <i class="{{event.icon}}"></i>&nbsp;{{event.name}}
                         </h3>
                         <h5>{{event.time.label}}</h5>
                     </div>
                     <div class="col-4">
-                        <button class="btn btn-info" data-instructor="{{instructor.name}}" data-event="{{event.time.label}}" data-time="{{event.name}}" data-icon="{{event.icon}}">
+                        <button class="btn btn-info mb-2" data-instructor="{{instructor.name}}" data-event="{{event.time.label}}" data-time="{{event.name}}" data-icon="{{event.icon}}">
                             <h3>
                                 <i class="fa fa-plus"></i>
                                 ADD NOW
                             </h3>
                         </button>
-                        <div class="badge badge-danger">
+                        <div class="badge badge-danger mt-2">
                             Capacity: <span class="badge badge-pill badge-light">{{event.capacity}}</span>
                         </div>
                     </div>
