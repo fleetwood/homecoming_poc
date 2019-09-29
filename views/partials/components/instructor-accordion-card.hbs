@@ -1,15 +1,34 @@
 <div class="card">
-    <div class="card-header">
-        <button type="button" data-toggle="collapse" data-target="#{{this}}" aria-expanded="false" aria-controls="{{this}}" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
-            {{> components/instructor-avatar image='12.jpg' name='Lexy Boom'}}
-        </button>
+    <div class="card-header rounded bg-primary" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2))">
+        <span data-toggle="collapse" data-target="#{{instructor.id}}" aria-expanded="false" aria-controls="{{instructor.id}}" class="text-left m-0 p-0 btn btn-block collapsed">
+            {{> components/instructor-avatar instructor=instructor}}
+        </span>
     </div>
-    <div id="{{this}}" class="collapse" data-parent="#instructor-accordion" style="">
-        <div class="card-body">Fri AM</div>
-        <div class="card-body">Fri PM</div>
-        <div class="card-body">Sat AM</div>
-        <div class="card-body">Sat PM</div>
-        <div class="card-body">Sun AM</div>
-        <div class="card-body">Sun PM</div>
+    <div id="{{instructor.id}}" class="collapse" data-parent="#instructor-accordion">
+        {{#each instructor.events as |event|}}
+            <div class="card-body" style="background-image: linear-gradient(to top, #1af, white)">
+                <div class="row">
+                    <div class="col-8">
+                        <h3 class="row pl-3">
+                            {{event.name}} <i class="{{event.icon}}"></i>
+                        </h3>
+                        <div class="row pl-3">
+                            <h5>{{event.time.label}}</h5>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <button class="btn btn-info">
+                            <h3>
+                                <i class="fa fa-plus"></i>
+                                ADD NOW
+                            </h3>
+                        </button>
+                        <div class="badge badge-danger">
+                            Capacity: <span class="badge badge-pill badge-light">{{event.capacity}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
     </div>
 </div>

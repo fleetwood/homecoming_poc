@@ -1,13 +1,14 @@
 const utils = require('./utils');
-const timeslots = [
-            { id: utils.guid(), label: "Fri AM" },
-            { id: utils.guid(), label: "Fri PM" },
-            { id: utils.guid(), label: "Sat AM" },
-            { id: utils.guid(), label: "Sat PM" },
-            { id: utils.guid(), label: "Sun AM" },
-            { id: utils.guid(), label: "Sun PM" }
+const times = [
+            { id: utils.guid(), order:0, label: "Fri AM" },
+            { id: utils.guid(), order:1, label: "Fri PM" },
+            { id: utils.guid(), order:2, label: "Sat AM" },
+            { id: utils.guid(), order:3, label: "Sat PM" },
+            { id: utils.guid(), order:4, label: "Sun AM" },
+            { id: utils.guid(), order:5, label: "Sun PM" }
         ]
     , tags = ['Power', 'Yoga', 'Distance', 'Beginner', 'Pro']
+    , icons = ['pe-7s-gym', 'fa fa-heartbeat', 'pe-7s-bicycle', 'fa fa-headphones', 'fa fa-fire']
     , tag_flavor = ['Hour', 'Challenge', 'Max', 'Rush', 'Grind', 'Gear']
     , names = {
         members: [
@@ -145,25 +146,19 @@ const timeslots = [
             'Mathew Buckner'
         ]
     }
+    , descriptions = [
+        'Fun and happy'
+        , 'Will work you to the bone!'
+        , 'Inspirational and uplifting'
+        , 'Energetic instructor who makes you work!'
+    ]
+    , avatars = ['01','02','03','04','05','06','07','08','09']
     , success = {
         BAD: 'danger',
         GOOD: 'success',
         MEDIUM: 'warning',
         ANY: 'primary'
     };
-
-/**
- * Create 30 specific instructors
- */
-const randomInstructor = () => {
-    return {
-        id: utils.guid(),
-        name: names.instructors.random(),
-        type: tags.random(),
-        timeslots: timeslots.random()
-    };
-}
-const instructors = [].mock(30, randomInstructor);
 
 /**
  * create 3000 members
@@ -174,7 +169,7 @@ const randomMember = () => {
         id: utils.guid(),
         name: names.members.random(),
         type: tags.random(),
-        timeslots: timeslots.random(slots)
+        times: times.random(slots)
     };
 }
 const members = [].mock(3000, randomMember);
@@ -185,18 +180,36 @@ const members = [].mock(3000, randomMember);
 const randomEvent = () => {
     const tag = tags.random()
         , capacity = [10,20,30,40,200].random()
-        , limit = utils.rand(10, capacity);
+        , limit = utils.rand(10, capacity)
+        , icon = icons[tags.indexOf(tag)];
     return {
         id: utils.guid(),
         name: `${tag} ${tag_flavor.random()}`,
-        time: timeslots.random(),
-        instructor: instructors.random(),
+        time: times.random(),
         type: tag,
+        icon,
         capacity: capacity,
         members: members.random(limit)
     };
 }
 const events = [].mock(100, randomEvent);
+
+/**
+ * Create 30 specific instructors
+ */
+const randomInstructor = () => {
+    const numTimes = utils.rand(1,times.length)
+        , events = utils._.sortBy([].mock(numTimes, randomEvent),'order')
+        , tags = events.map(e => e.type);
+    return {
+        id: utils.guid(),
+        name: names.instructors.random(),
+        description: descriptions.random(),
+        events,
+        image: avatars.random()+'.png'
+    };
+}
+const instructors = [].mock(30, randomInstructor);
 
 /**
  * Associate each object to its references
@@ -235,7 +248,7 @@ module.exports = {
     instructors,
     members,
     statistics,
-    timeslots,
+    times,
     randomEvent,
     randomInstructor,
     randomMember

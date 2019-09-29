@@ -5,6 +5,7 @@ const moment = require('moment');
 const fs = require('fs');
 const path = require('path');
 const sqlString = require('sqlstring');
+const _ = require('underscore');
 
 /////////////////////////////
 // PROTOTYPING
@@ -67,16 +68,13 @@ if (isUndefined(Object.toJsonString)) {
 if (isUndefined(Array.sortBy)) {
     /**
      * @param {String} property
-     * @param {String} dir
      * @returns {Array}
      * 
      * @description Sorts the array by the property. Default ascending, unless set to DESC
      */
     Object.defineProperty(Array.prototype, 'sortBy', {
-        value(property, dir) {
-            return dir && (dir.toUpperCase() === 'DESC' || dir.toUpperCase() === 'DSC' || dir.toUpperCase() === 'DES')
-                ? this.sort((a, b) => (a[property] > b[property] ? 1 : -1))
-                : this.sort((a, b) => (a[property] < b[property] ? 1 : -1));
+        value(property) {
+            return _.sortBy(this, property);
         }
     })
 }
@@ -266,6 +264,7 @@ const dateFormats = {
 const log = (str) => console.log(str);
 
 module.exports = {
+    _,
     absolutePath,
     asNum,
     config,
