@@ -1,0 +1,18 @@
+
+    <div class="card">
+        <div id="headingOne" class="card-header">
+            <button type="button" data-toggle="collapse" data-target="#{{guid}}" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
+                <h5 class="m-0 p-0">
+                    {{> components/instructor-avatar image='12.jpg' name='Lexy Boom'}}
+                </h5>
+            </button>
+        </div>
+        <div data-parent="#{{owner}}" id="{{guid}}" aria-labelledby="headingOne" class="collapse" style="">
+            <div class="card-body">Fri AM</div>
+            <div class="card-body">Fri PM</div>
+            <div class="card-body">Sat AM</div>
+            <div class="card-body">Sat PM</div>
+            <div class="card-body">Sun AM</div>
+            <div class="card-body">Sun PM</div>
+        </div>
+    </div>
