@@ -36,6 +36,10 @@ app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views/');
 app.use(express.static('public/'));
 
+hbs.registerHelper('guid', function(options) {
+    return utils.guid('XXXXXXXX');
+});
+
 [api, apiUI, index, register, results, saveTheDate, schedule]
     .forEach(f => f.init(app));
 
