@@ -114,43 +114,31 @@ const times = [
             'Kashif Woodley'
         ],
         instructors: [
-            'Nala Alfaro',
-            'Grady Blake',
-            'Milana Shepherd',
-            'Tom Tomlinson',
-            'Osian Ahmed',
-            'Bilal Petersen',
-            'Bernard Espinosa',
-            'Amarah Perez',
-            'Estelle Sheldon',
-            'Gerald Boyd',
-            'Aman Cornish',
-            'Nigel Sheridan',
-            'Toby Rosa',
-            'Harpreet Derrick',
-            'Suman Greene',
-            'Osman Hoover',
-            'Kylo Mcphee',
-            'Weronika Lancaster',
-            'Roxy Baldwin',
-            'Annaliese Bob',
-            'Mathias Partridge',
-            'Emil Cooke',
-            'Noa Bain',
-            'Toni Lyons',
-            'Vanesa Squires',
-            'Whitney Plant',
-            'Shahid Simon',
-            'Jacques Flower',
-            'Lawson Garner',
-            'Mathew Buckner'
+            'Ally',
+            'Alex',
+            'Christine',
+            'Cody',
+            'Emma',
+            'Hannah',
+            'Jenn',
+            'Jess',
+            'Instructor #12',
+            'Instructor #13',
+            'Denis',
+            'Olivia',
+            'Matt',
+            'Robin',
+            'Ben',
+            'Leanne'
         ]
     }
     , descriptions = [
-        'Fun and happy'
+          'Fun and happy'
         , 'Will work you to the bone!'
-        , 'Inspirational and uplifting'
+        , 'Inspirational instructor will lift you up'
         , 'Energetic instructor who makes you work!'
+        , 'Get ready to sweat.'
+        , 'Engaging and upbeat, but tough.'
     ]
     , avatars = ['01','02','03','04','05','06','07','08','09']
     , success = {
@@ -189,27 +177,28 @@ const randomEvent = () => {
         type: tag,
         icon,
         capacity: capacity,
-        members: members.random(limit)
+        members: [],
+        instructor: {}
     };
 }
-const events = [].mock(100, randomEvent);
-
-/**
- * Create 30 specific instructors
- */
 const randomInstructor = () => {
-    const numTimes = utils.rand(1,times.length)
-        , events = utils._.sortBy([].mock(numTimes, randomEvent),'order')
-        , tags = events.map(e => e.type);
     return {
         id: utils.guid(),
         name: names.instructors.random(),
         description: descriptions.random(),
-        events,
+        events: [],
         image: avatars.random()+'.png'
     };
 }
-const instructors = [].mock(30, randomInstructor);
+const instructors = names.instructors.map(i => {
+    return {
+        id: utils.guid(),
+        name: i,
+        description: descriptions.random(),
+        events: [],
+        image: avatars.random()+'.png'
+    }
+});
 
 /**
  * Associate each object to its references
