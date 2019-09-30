@@ -1,13 +1,60 @@
-const utils = require('./utils');
-const times = [
-            { id: utils.guid(), order:0, label: "Fri AM" },
-            { id: utils.guid(), order:1, label: "Fri PM" },
-            { id: utils.guid(), order:2, label: "Sat AM" },
-            { id: utils.guid(), order:3, label: "Sat PM" },
-            { id: utils.guid(), order:4, label: "Sun AM" },
-            { id: utils.guid(), order:5, label: "Sun PM" }
-        ]
-    , tags = ['Power', 'Yoga', 'Distance', 'Beginner', 'Pro']
+const utils = require('./utils')
+    , Guid = require('./../classes/Guid')
+    , Venue = require('./../classes/Venue')
+    , Workouts = require('./../classes/Workouts')
+    , Classtimes = require('./../classes/Classtimes')
+    , Instructor = require('./../classes/Instructor')
+    , ScheduledEvent = require('./../classes/ScheduledEvent');
+
+const classes = [
+        new ScheduledEvent(Classtimes.FRIAM, 40, Venue.STUDIO, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.FRIPM, 40, Venue.STUDIO, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.FRIAM, 25, Venue.FLEX, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.FRIPM, 25, Venue.FLEX, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.FRIAM, 20, Venue.STUDIO, Workouts.TREAD),
+        new ScheduledEvent(Classtimes.FRIPM, 20, Venue.STUDIO, Workouts.TREAD),
+        new ScheduledEvent(Classtimes.FRIAM, 20, Venue.STUDIO, Workouts.YOGA),
+        new ScheduledEvent(Classtimes.FRIPM, 20, Venue.STUDIO, Workouts.YOGA),
+        new ScheduledEvent(Classtimes.FRIPM, 200, Venue.LARGE, Workouts.OPEN),
+
+        new ScheduledEvent(Classtimes.SATAM, 40, Venue.STUDIO, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.SATPM, 40, Venue.STUDIO, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.SATAM, 25, Venue.FLEX, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.SATPM, 25, Venue.FLEX, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.SATAM, 20, Venue.STUDIO, Workouts.TREAD),
+        new ScheduledEvent(Classtimes.SATPM, 20, Venue.STUDIO, Workouts.TREAD),
+        new ScheduledEvent(Classtimes.SATAM, 20, Venue.STUDIO, Workouts.YOGA),
+        new ScheduledEvent(Classtimes.SATPM, 20, Venue.STUDIO, Workouts.YOGA),
+        new ScheduledEvent(Classtimes.SATPM, 200, Venue.LARGE, Workouts.OPEN),
+
+        new ScheduledEvent(Classtimes.SUNAM, 40, Venue.STUDIO, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.SUNPM, 40, Venue.STUDIO, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.SUNAM, 25, Venue.FLEX, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.SUNPM, 25, Venue.FLEX, Workouts.BIKE),
+        new ScheduledEvent(Classtimes.SUNAM, 20, Venue.STUDIO, Workouts.TREAD),
+        new ScheduledEvent(Classtimes.SUNPM, 20, Venue.STUDIO, Workouts.TREAD),
+        new ScheduledEvent(Classtimes.SUNAM, 20, Venue.STUDIO, Workouts.YOGA),
+        new ScheduledEvent(Classtimes.SUNPM, 20, Venue.STUDIO, Workouts.YOGA),
+        new ScheduledEvent(Classtimes.SATPM, 200, Venue.LARGE, Workouts.OPEN)
+    ]
+    , instructors = [
+        'Ally',
+        'Alex',
+        'Christine',
+        'Cody',
+        'Emma',
+        'Hannah',
+        'Jenn',
+        'Jess',
+        'Instructor #12',
+        'Instructor #13',
+        'Denis',
+        'Olivia',
+        'Matt',
+        'Robin',
+        'Ben',
+        'Leanne'
+    ].map(n => new Instructor(n, []))
     , icons = ['pe-7s-gym', 'fa fa-heartbeat', 'pe-7s-bicycle', 'fa fa-headphones', 'fa fa-fire']
     , tag_flavor = ['Hour', 'Challenge', 'Max', 'Rush', 'Grind', 'Gear']
     , names = {
@@ -112,35 +159,8 @@ const times = [
             'Blanka Houghton',
             'Rian Howarth',
             'Kashif Woodley'
-        ],
-        instructors: [
-            'Ally',
-            'Alex',
-            'Christine',
-            'Cody',
-            'Emma',
-            'Hannah',
-            'Jenn',
-            'Jess',
-            'Instructor #12',
-            'Instructor #13',
-            'Denis',
-            'Olivia',
-            'Matt',
-            'Robin',
-            'Ben',
-            'Leanne'
         ]
     }
-    , descriptions = [
-          'Fun and happy'
-        , 'Will work you to the bone!'
-        , 'Inspirational instructor will lift you up'
-        , 'Energetic instructor who makes you work!'
-        , 'Get ready to sweat.'
-        , 'Engaging and upbeat, but tough.'
-    ]
-    , avatars = ['01','02','03','04','05','06','07','08','09']
     , success = {
         BAD: 'danger',
         GOOD: 'success',
@@ -152,53 +172,11 @@ const times = [
  * create 3000 members
  */
 const randomMember = () => {
-    const slots = utils.rand(1,3)
-    return {
-        id: utils.guid(),
-        name: names.members.random(),
-        type: tags.random(),
-        times: times.random(slots)
-    };
-}
+    const times = utils.rand(1,6)
+        , wouts = utils.rand(1,3);
+    const workouts = Workouts.random(wouts);
+};
 const members = [].mock(3000, randomMember);
-
-/**
- * create 70 events with random capacities
- */
-const randomEvent = () => {
-    const tag = tags.random()
-        , capacity = [10,20,30,40,200].random()
-        , limit = utils.rand(10, capacity)
-        , icon = icons[tags.indexOf(tag)];
-    return {
-        id: utils.guid(),
-        name: `${tag} ${tag_flavor.random()}`,
-        time: times.random(),
-        type: tag,
-        icon,
-        capacity: capacity,
-        members: [],
-        instructor: {}
-    };
-}
-const randomInstructor = () => {
-    return {
-        id: utils.guid(),
-        name: names.instructors.random(),
-        description: descriptions.random(),
-        events: [],
-        image: avatars.random()+'.png'
-    };
-}
-const instructors = names.instructors.map(i => {
-    return {
-        id: utils.guid(),
-        name: i,
-        description: descriptions.random(),
-        events: [],
-        image: avatars.random()+'.png'
-    }
-});
 
 /**
  * Associate each object to its references
@@ -208,7 +186,7 @@ const statistics = [
     {
         title: 'Events',
         description: 'Number of total events',
-        value: events.length,
+        value: classes.length,
         success: success.GOOD
     },
     {
@@ -232,13 +210,12 @@ const statistics = [
     }
 ];
 
+console.log('w00t')
+
 module.exports = {
-    events,
+    events: classes,
     instructors,
     members,
     statistics,
-    times,
-    randomEvent,
-    randomInstructor,
-    randomMember
-}
+    times: []
+};
