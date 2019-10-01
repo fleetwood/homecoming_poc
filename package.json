@@ -27,6 +27,7 @@
     "mime": "^2.4.4",
     "moment": "^2.24.0",
     "npm": "^6.10.2",
+    "performance": "^1.1.1",
     "querystring": "^0.2.0",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",

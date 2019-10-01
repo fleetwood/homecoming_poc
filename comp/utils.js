@@ -112,6 +112,47 @@ if (isUndefined(Array.limit)) {
     })
 }
 
+if (isUndefined(Array.addIfUnique)) {
+    Object.defineProperty(Array.prototype, 'addIfUnique', {
+        /**
+         * Add an item to the array if it doesn't already exist.
+         * @param item
+         * @param prop (Optional) Should be a unique property, like a guid.
+         * @returns {value}
+         */
+        value(item, prop = null) {
+            if (this.find(f =>
+                    f === item ||
+                    (prop !== null && f[prop] === item[prop]))
+                ) {
+                return this;
+            }
+            this.push(item);
+            return this;
+        }
+    });
+}
+
+if (isUndefined(Array.popIfExists)) {
+    Object.defineProperty(Array.prototype, 'popIfExists', {
+        /**
+         * Removes an item from the array if it exists.
+         * @param item
+         * @param prop (Optional) Should be a unique property, like a guid.
+         * @returns {value}
+         */
+        value(item, prop = null) {
+            let e = this.find(f =>
+                        f === item ||
+                        (prop !== null && f[prop] === item[prop]));
+            if (e) {
+                this.slice(this.indexOf(e),1);
+            }
+            return this;
+        }
+    });
+}
+
 if (isUndefined(Array.mock)) {
     /**
      * Select a random item from the array
@@ -127,15 +168,11 @@ if (isUndefined(Array.mock)) {
 }
 
 if (isUndefined(Array.random)) {
-    /**
-     * Select a random item from the array. If limit is set, 
-     * will return an array of random items from the array.
-     * @param {num} limit Number of items to return
-     */
     Object.defineProperty(Array.prototype, 'random', {
         /**
          * Select a random item from the array. If limit is set, 
          * will return an array of random items from the array.
+         * Uses _Array.addIfUnique()_ to ensure uniques.
          * @param {num} limit Number of items to return
          */
         value(limit = 1) {
@@ -144,7 +181,7 @@ if (isUndefined(Array.random)) {
             }
             let results = [];
             while(limit-=1 > 0) {
-                results.push(this.random());
+                results.addIfUnique(this.random());
             }
             return results;
         }
