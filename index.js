@@ -8,14 +8,7 @@ const http = require('http');
 const path = require('path');
 const utils = require('./comp/utils');
 const app = express();
-
-const api = require('./api')
-    , apiUI = require('./api.ui')
-    , schedule = require('./routes/schedule')
-    , index = require('./routes/dashboard')
-    , register = require('./routes/register')
-    , results = require('./routes/results')
-    , saveTheDate = require('./routes/save-the-date');
+const dashboard = require('./routes/dashboard');
 
 app.use(function (req, res, next) {
     req.rawBody = '';
@@ -36,12 +29,7 @@ app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views/');
 app.use(express.static('public/'));
 
-hbs.registerHelper('guid', function(options) {
-    return utils.guid('XXXXXXXX');
-});
-
-[api, apiUI, index, register, results, saveTheDate, schedule]
-    .forEach(f => f.init(app));
+dashboard.init(app);
 
 const server = http.createServer(app);
 server.listen(config.port, null, function () {

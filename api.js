@@ -1,6 +1,4 @@
-const utils = require('./comp/utils')
-    , renderError = require('./comp/utils.rendering').renderError
-    , renderUiError = require('./comp/utils.rendering').renderUiError;
+const utils = require('./comp/utils');
 
 const init = (app) => {
 
@@ -17,16 +15,6 @@ const init = (app) => {
         catch (e) {
             renderError(res, e);
         }
-    });
-
-    app.get('/api/user', (req, res) => {
-        // twitter.getUser(req.query)
-        //     .then(user => {
-        //         res.send(user.data);
-        //     })
-        //     .catch(e => {
-        //         res.send({ status: 500, error: e });
-        //     });
     });
 
 }
