@@ -14,12 +14,12 @@
     "npm": "5.6.0"
   },
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.4",
     "debug": "^2.6.9",
     "dot-env": "0.0.1",
     "dotenv": "^8.0.0",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-hbs": "^2.1.2",
     "jquery.scrollto": "^2.1.2",
     "lib": "^4.0.2",
